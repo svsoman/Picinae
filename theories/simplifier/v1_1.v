@@ -36,9 +36,9 @@ From Picinae Require Import theory.
 From Picinae Require Import statics.
 From Picinae Require Import finterp.
 From Picinae.simplifier Require Export base.
-From Stdlib Require Import FunctionalExtensionality.
-From Stdlib Require Import NArith.
-From Stdlib Require Import ZArith.
+Require Import FunctionalExtensionality.
+Require Import NArith.
+Require Import ZArith.
 
 (* Introduction and Logical Organization:
 
@@ -4122,7 +4122,7 @@ Proof.
     rewrite simpl_lor_sound; cbn [eval_sastN];
     rewrite simpl_shiftl_sound; cbn [eval_sastN];
     rewrite E1, E2, N.mul_comm;
-    apply getmem_split.
+    rewrite fold_cbits'; eapply getmem_split.
 Qed.
 
 Theorem simpl_xbytes_sound:
